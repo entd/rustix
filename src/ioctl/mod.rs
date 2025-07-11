@@ -327,7 +327,6 @@ type _Opcode = c::c_ulong;
 // AIX, Emscripten, Fuchsia, Solaris, and WASI use a `int`.
 #[cfg(any(
     solarish,
-    target_os = "aix",
     target_os = "cygwin",
     target_os = "fuchsia",
     target_os = "emscripten",
@@ -335,6 +334,12 @@ type _Opcode = c::c_ulong;
     target_os = "wasi",
 ))]
 type _Opcode = c::c_int;
+
+#[cfg(
+    target_os = "aix"
+)]
+type _Opcode = c::c_long;
+
 
 // ESP-IDF uses a `c_uint`.
 #[cfg(target_os = "espidf")]
