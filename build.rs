@@ -19,6 +19,7 @@ fn main() {
     let pointer_width = var("CARGO_CFG_TARGET_POINTER_WIDTH").unwrap();
     let endian = var("CARGO_CFG_TARGET_ENDIAN").unwrap();
 
+
     // Check for special target variants.
     let is_x32 = arch == "x86_64" && pointer_width == "32";
     let is_arm64_ilp32 = arch == "aarch64" && pointer_width == "32";
@@ -142,6 +143,9 @@ fn main() {
     }
     if os == "solaris" || os == "illumos" {
         use_feature("solarish");
+    }
+    if os == "aix" {
+        use_feature("aix");
     }
     if apple || freebsdlike || netbsdlike {
         use_feature("bsd");

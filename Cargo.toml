@@ -239,6 +239,7 @@ try_close = []
 [lints.rust.unexpected_cfgs]
 level = "warn"
 check-cfg = [
+    'cfg(aix)',
     'cfg(alloc_c_string)',
     'cfg(alloc_ffi)',
     'cfg(apple)',
